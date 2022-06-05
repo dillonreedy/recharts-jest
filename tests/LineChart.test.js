@@ -3,39 +3,28 @@
  */
 import React from 'react';
 import { LineChartWrapper, handleMouseOver, handleSyncMethod } from './data/LineChart.data';
-import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { setup } from './utils/setup.util';
 
-function setup(jsx) {
-  const { container } = render(jsx);
-  return {
-    user: userEvent.setup(),
-    container
-  };
-}
+
+const {user, container} = setup(<LineChartWrapper />);
 
 test('Can create a test snapshot', async () => {
-  const {container} = setup(<LineChartWrapper />);
-  expect(container).toMatchSnapshot;
+  expect(container).toMatchSnapshot();
 });
 
 test('A cursor does not exist', async () => {
-  const {container} = setup(<LineChartWrapper />);
   expect(container.querySelector('recharts-tooltip-cursor')).toBeNull;
 });
 
 test('Tooltip wrapper exists', () => {
-  const {container} = setup(<LineChartWrapper />);
   expect(container.querySelector('recharts-tooltip-wrapper')).not.toBeNull;
 });
 
 test('Tooltips are not visible by default', () => {
-  const {container} = setup(<LineChartWrapper />);
   expect(container.querySelector('recharts-tooltip-wrapper')).not.toBeVisible;
 })
 
 test('Both tooltips are visible on hover', () => {
-  const {user, container} = setup(<LineChartWrapper />);
   const element = container.querySelector('recharts-tooltip-wrapper');
 
   user.hover(element)
@@ -52,7 +41,6 @@ test('Both tooltips are visible on hover', () => {
 });
 
 test('Correct values are displayed on tooltips', () => {
-  const {user, container} = setup(<LineChartWrapper />);
   const element = container.querySelector('recharts-tooltip-wrapper');
 
   user.hover(element)
@@ -61,7 +49,6 @@ test('Correct values are displayed on tooltips', () => {
 
         expect(tooltipElements[0].props().value).toBe(400);
         expect(tooltipElements[1].props().value).toBe(550);
-
       })
 });
 
