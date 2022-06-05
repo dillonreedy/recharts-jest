@@ -52,4 +52,8 @@ test('Correct values are displayed on tooltips', () => {
       })
 });
 
+test('Failing test', () => {
+  expect(typeof 'string val').toBe(typeof 10);
+})
+
 
