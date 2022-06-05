@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "improved-performance-test": "jest --runInBand"
+    "test": "jest"
   },
   "jest": {
     "verbose": true,
