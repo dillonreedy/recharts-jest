@@ -3,6 +3,8 @@
  */
 import React from 'react';
 import { LineChartWrapper, handleMouseOver, handleSyncMethod } from './data/LineChart.data';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 function setup(jsx) {
   const { container } = render(jsx);

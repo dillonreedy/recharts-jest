@@ -1,6 +1,4 @@
-import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { render } from '@testing-library/react';
 import { LineChart, Line, XAxis, Tooltip } from 'recharts';
 
 const data = [
