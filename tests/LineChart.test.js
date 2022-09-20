@@ -52,4 +52,3 @@ test('Correct values are displayed on tooltips', () => {
       })
 });
 
-
